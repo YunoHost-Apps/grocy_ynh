@@ -21,6 +21,12 @@ Grocy is a web-based self-hosted groceries & household management solution for y
 
 * [Official demo](https://en.demo.grocy.info/stockoverview)
 
+## Configuration
+
+ Default login
+ 	user:     **admin**
+ 	password: **admin**
+ 	
 ## Documentation
 
  * Official documentation: Link to the official documentation of this app
