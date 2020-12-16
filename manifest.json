@@ -1,0 +1,65 @@
+{
+    "name": "Grocy",
+    "id": "grocy",
+    "packaging_format": 1,
+    "description": {
+        "en": "Issue tracker that provides a balance between simplicity and power",
+        "fr": "Gestionnaire de ticket avec un équilibre entre simplicité et puissance"
+    },
+    "version": "2.7.1~ynh1",
+    "url": "https://github.com/grocy/grocy",
+    "license": "MIT",
+    "maintainer": {
+        "name": "",
+        "email": ""
+    },
+    "requirements": {
+        "yunohost": ">= 4.0.0"
+    },
+    "multi_instance": false,
+    "services": [
+        "nginx",
+        "php7.0-fpm"
+    ],
+    "arguments": {
+        "install": [{
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Choose a domain name for Grocy",
+                    "fr": "Choisissez un nom de domaine pour Grocy"
+                },
+                "example": "example.com"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "ask": {
+                    "en": "Choose a path for Grocy",
+                    "fr": "Choisissez un chemin pour Grocy"
+                },
+                "example": "/grocy",
+                "default": "/grocy"
+            },
+            {
+                "name": "language",
+                "type": "string",
+                "ask": {
+                    "en": "Choose the application language",
+                    "fr": "Choisissez la langue de l'application"
+                },
+                "choices": ["fr", "en"],
+                "default": "fr"
+            },        
+            {
+                "name": "is_public",
+                "type": "boolean",
+                "ask": {
+                    "en": "Is it a public site?",
+                    "fr": "Est-ce un site public ?"
+                },
+                "default": true
+            }
+        ]
+    }
+}
