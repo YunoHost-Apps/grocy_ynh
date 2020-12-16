@@ -38,8 +38,8 @@
                     "en": "Choose a path for Grocy",
                     "fr": "Choisissez un chemin pour Grocy"
                 },
-                "example": "/grocy",
-                "default": "/grocy"
+                "example": "/",
+                "default": "/"
             },
             {
                 "name": "language",
