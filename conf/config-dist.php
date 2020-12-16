@@ -35,7 +35,7 @@ Setting('CALENDAR_SHOW_WEEK_OF_YEAR', true);
 # this here is used to format all money values,
 # so doesn't really matter, but should be the
 # ISO 4217 code of the currency ("USD", "EUR", "GBP", etc.)
-Setting('CURRENCY', '__LANGUAGE__');
+Setting('CURRENCY', 'EUR');
 
 # When running grocy in a subdirectory, this should be set to the relative path, otherwise empty
 # Example:
