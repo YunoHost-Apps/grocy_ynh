@@ -42,7 +42,7 @@ Setting('CURRENCY', 'EUR');
 #  Webserver root directory = /var/www
 #  grocy directory = /var/www/grocy
 #  => BASE_PATH = /grocy
-Setting('BASE_PATH', '');
+Setting('BASE_PATH', '/grocy');
 
 # The base url of your installation,
 # should be just "/" when running directly under the root of a (sub)domain
@@ -55,7 +55,7 @@ Setting('BASE_URL', '/');
 Setting('STOCK_BARCODE_LOOKUP_PLUGIN', 'DemoBarcodeLookupPlugin');
 
 # If, however, your webserver does not support URL rewriting, set this to true
-Setting('DISABLE_URL_REWRITING', true);
+Setting('DISABLE_URL_REWRITING', false);
 
 # Specify an custom homepage if desired - by default the homepage will be set to the stock overview,
 # this needs to be one of the following values:
