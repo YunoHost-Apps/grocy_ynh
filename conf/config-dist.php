@@ -55,7 +55,7 @@ Setting('BASE_URL', '/');
 Setting('STOCK_BARCODE_LOOKUP_PLUGIN', 'DemoBarcodeLookupPlugin');
 
 # If, however, your webserver does not support URL rewriting, set this to true
-Setting('DISABLE_URL_REWRITING', false);
+Setting('DISABLE_URL_REWRITING', true);
 
 # Specify an custom homepage if desired - by default the homepage will be set to the stock overview,
 # this needs to be one of the following values:
