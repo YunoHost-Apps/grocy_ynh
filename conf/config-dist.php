@@ -42,7 +42,7 @@ Setting('CURRENCY', 'EUR');
 #  Webserver root directory = /var/www
 #  grocy directory = /var/www/grocy
 #  => BASE_PATH = /grocy
-Setting('BASE_PATH', '/grocy');
+Setting('BASE_PATH', '');
 
 # The base url of your installation,
 # should be just "/" when running directly under the root of a (sub)domain
