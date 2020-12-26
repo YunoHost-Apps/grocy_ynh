@@ -62,31 +62,11 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
 
-	if [[ ! -f "$final_path/data" ]]; then
-		# config.ini.php is only created during the post-install process...
-		# it is therefore not present when the CI tests are carried out...
-		# This condition is only for CI test to go through the upgrade process
-		ynh_secure_remove --file="$final_path"
-		# Download, check integrity, uncompress and patch the source from app.src
-		ynh_setup_source --dest_dir="$final_path"
-	else
-
-		tmpdir="$(mktemp -d)"
-
-		# Backup the config file in the temp dir
-		cp -a "$final_path/data" "$tmpdir/data"
-
 		# Remove the app directory securely
 		ynh_secure_remove --file="$final_path"
 
 		# Download, check integrity, uncompress and patch the source from app.src
 		ynh_setup_source --dest_dir="$final_path"
-
-		# Copy the admin saved settings from tmp directory to final path	
-		cp -a "$tmpdir/data" "$final_path/config/data" 
-
-		# Remove the tmp directory securely
-		ynh_secure_remove --file="$tmpdir"
 fi
 
 #=================================================
@@ -112,6 +92,15 @@ ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=1
 
 # Create a dedicated php-fpm config
 ynh_add_fpm_config --package="$extra_php_dependencies"
+
+#=================================================
+# MODIFY A CONFIG FILE
+#=================================================
+
+cp -a ../conf/config-dist.php "$final_path/data/config.php"
+
+ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --target_file="$final_path/data/config.php"
+
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
