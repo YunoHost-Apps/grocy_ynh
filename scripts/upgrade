@@ -21,7 +21,7 @@ path_url=$(ynh_app_setting_get --app=$app --key=path)
 is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
-phpversion=$(ynh_app_setting_get --app="$app" --key=phpversion)
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # CHECK VERSION
@@ -33,15 +33,6 @@ upgrade_type=$(ynh_check_app_version_changed)
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
-
-# Fix is_public as a boolean value
-if [ "$is_public" = "Yes" ]; then
-	ynh_app_setting_set --app=$app --key=is_public --value=1
-	is_public=1
-elif [ "$is_public" = "No" ]; then
-	ynh_app_setting_set --app=$app --key=is_public --value=0
-	is_public=0
-fi
 
 # If final_path doesn't exist, create it
 if [ -z "$final_path" ]; then
@@ -71,8 +62,23 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path"
+		# Create a temporary directory
+		tmpdir="$(mktemp -d)"
+
+		# Backup the config file in the temp dir
+		cp -R "$final_path/data" "$tmpdir/data"
+
+		# Remove the app directory securely
+		ynh_secure_remove --file="$final_path"
+
+		# Download, check integrity, uncompress and patch the source from app.src
+		ynh_setup_source --dest_dir="$final_path"
+
+		# Copy the admin saved settings from tmp directory to final path	
+		cp -RT "$tmpdir/data" "$final_path/data" 
+
+		# Remove the tmp directory securely
+		ynh_secure_remove --file="$tmpdir"
 fi
 
 #=================================================
@@ -92,13 +98,6 @@ ynh_script_progression --message="Making sure dedicated system user exists..." -
 ynh_system_user_create --username=$app
 
 #=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-
-# Set permissions to app files
-chown -R $app: $final_path
-
-#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=1
@@ -110,11 +109,18 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 # MODIFY A CONFIG FILE
 #=================================================
 
-cp -a ../conf/config-dist.php "$final_path/config-dist.php"
+cp -a ../conf/config-dist.php "$final_path/data/config.php"
 
-#ynh_replace_string --match_string="__DOMAIN__" --replace_string="$domain" --target_file="$final_path/data/config.php"
-#ynh_replace_string --match_string="__PATH_URL__" --replace_string="$path_url" --target_file="$final_path/data/config.php"
 ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --target_file="$final_path/data/config.php"
+
+
+#=================================================
+# SECURE FILES AND DIRECTORIES
+#=================================================
+
+# Set permissions to app files
+chown -R $app: $final_path
+chmod -R 755 $final_path/data
 
 #=================================================
 # RELOAD NGINX
