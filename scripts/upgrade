@@ -111,13 +111,6 @@ chown -R $app: $final_path
 chmod -R 755 $final_path/data
 
 #=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description="Self-hosted groceries & household management" --log="/var/log/$app/$app.log"
-
-#=================================================
 # RELOAD NGINX
 #=================================================
 ynh_script_progression --message="Reloading NGINX web server..." --weight=1
