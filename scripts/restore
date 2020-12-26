@@ -77,6 +77,7 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 
 # Restore permissions on app files
 chown -R $app: $final_path
+chmod -R 755 $final_path/data
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST

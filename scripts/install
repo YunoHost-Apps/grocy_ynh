@@ -104,6 +104,7 @@ ynh_store_file_checksum --file="$final_path/data/config.php"
 
 # Set permissions to app files
 chown -R $app: $final_path
+chmod -R 755 $final_path/data
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
