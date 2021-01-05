@@ -11,7 +11,7 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 ## Vue d'ensemble
 Grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Version incluse :** 3.0.0
+**Version incluse :** 3.0.1
 
 ## Captures d'écran
 
@@ -24,7 +24,7 @@ Grocy is a web-based self-hosted groceries & household management solution for y
 ## Configuration
 
  Default login
- 	user:     **admin**
+ 	user:     **admin**  
  	password: **admin**
  	
 ## Documentation
