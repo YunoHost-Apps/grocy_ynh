@@ -42,7 +42,7 @@ Grocy is a web-based self-hosted groceries & household management solution for y
 
 ## Limitations
 
-:warning: Pour l'instant, Grocy doit être installé dans un domaine racine ou un sous-dpmaine.
+:warning: Pour l'instant, Grocy doit être installé dans un domaine racine ou un sous-domaine.
 
 ## Informations additionnelles
 
