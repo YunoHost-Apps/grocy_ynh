@@ -23,10 +23,10 @@ Grocy is a web-based self-hosted groceries & household management solution for y
 
 ## Configuration
 
- Default login
- 	user:     **admin**
- 	password: **admin**
- 	
+Connexion par défaut
+  utilisateur : **admin**
+  mot de passe : **admin**
+  
 ## Documentation
 
  * Documentation officielle : Lien vers la documentation officielle de cette application.
@@ -46,7 +46,7 @@ Grocy is a web-based self-hosted groceries & household management solution for y
 
 ## Limitations
 
-* Limitations connues.
+:warning: Pour l'instant, Grocy doit être installé dans un domaine racine ou un sous-domaine.
 
 ## Informations additionnelles
 
