@@ -115,10 +115,7 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 # MODIFY A CONFIG FILE
 #=================================================
 
-cp -a ../conf/config-dist.php "$final_path/data/config.php"
-
-ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --target_file="$final_path/data/config.php"
-
+ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
