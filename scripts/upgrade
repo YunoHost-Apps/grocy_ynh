@@ -18,7 +18,6 @@ app=$YNH_APP_INSTANCE_NAME
 
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
-is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
@@ -38,6 +37,13 @@ ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 if [ -z "$final_path" ]; then
 	final_path=/var/www/$app
 	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
+fi
+
+# Cleaning legacy permissions
+if ynh_legacy_permissions_exists; then
+	ynh_legacy_permissions_delete_all
+
+	ynh_app_setting_delete --app=$app --key=is_public
 fi
 
 #=================================================
@@ -109,10 +115,7 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 # MODIFY A CONFIG FILE
 #=================================================
 
-cp -a ../conf/config-dist.php "$final_path/data/config.php"
-
-ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --target_file="$final_path/data/config.php"
-
+ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
 
 #=================================================
 # SECURE FILES AND DIRECTORIES
@@ -120,6 +123,7 @@ ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --
 
 # Set permissions to app files
 chown -R $app: $final_path
+chmod o-rwx $final_path
 chmod -R 755 $final_path/data
 
 #=================================================

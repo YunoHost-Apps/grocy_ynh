@@ -21,7 +21,7 @@ ynh_abort_if_errors
 
 # Retrieve arguments
 domain=$YNH_APP_ARG_DOMAIN
-path_url=$"/"
+path_url="/"
 is_public=$YNH_APP_ARG_IS_PUBLIC
 language=$YNH_APP_ARG_LANGUAGE
 
@@ -45,7 +45,6 @@ ynh_script_progression --message="Storing installation settings..." --weight=1
 
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
-ynh_app_setting_set --app=$app --key=is_public --value=$is_public
 ynh_app_setting_set --app=$app --key=language --value=$language
 
 #=================================================
@@ -86,9 +85,7 @@ phpversion=$(ynh_app_setting_get --app="$app" --key=phpversion)
 # MODIFY A CONFIG FILE
 #=================================================
 
-cp -a ../conf/config-dist.php "$final_path/data/config.php"
-
-ynh_replace_string --match_string="__LANGUAGE__" --replace_string="$language" --target_file="$final_path/data/config.php"
+ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
@@ -104,17 +101,18 @@ ynh_store_file_checksum --file="$final_path/data/config.php"
 
 # Set permissions to app files
 chown -R $app: $final_path
+chmod o-rwx $final_path
 chmod -R 755 $final_path/data
 
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring SSOwat..." --weight=1
+ynh_script_progression --message="Configuring permissions..." --weight=1
 
 # Make app public if necessary or protect it
 if [ $is_public -eq 1 ]
 then
-	ynh_permission_update --permission "main" --add "visitors"
+	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
