@@ -123,7 +123,6 @@ ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/d
 
 # Set permissions to app files
 chown -R $app: $final_path
-chmod o-rwx $final_path
 chmod -R 755 $final_path/data
 
 #=================================================
