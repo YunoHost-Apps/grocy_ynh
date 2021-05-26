@@ -95,17 +95,6 @@ chmod 400 "$final_path/data/config.php"
 chown $app "$final_path/data/config.php"
 
 #=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-
-# Set permissions to app files
-# chown -R $app: $final_path
-# chmod o-rwx $final_path
-# chmod -R 755 $final_path/data
-
-#=================================================
 # SETUP SSOWAT
 #=================================================
 ynh_script_progression --message="Configuring permissions..." --weight=1
