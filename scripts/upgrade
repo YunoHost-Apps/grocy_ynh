@@ -87,6 +87,10 @@ then
 		#ynh_secure_remove --file="$tmpdir"
 fi
 
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
@@ -117,14 +121,17 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 
 ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
 
+chmod 400 "$final_path/data/config.php"
+chown $app "$final_path/data/config.php"
+
 #=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
 
 # Set permissions to app files
-chown -R $app: $final_path
-chmod o-rwx $final_path
-chmod -R 755 $final_path/data
+# chown -R $app: $final_path
+# chmod o-rwx $final_path
+# chmod -R 755 $final_path/data
 
 #=================================================
 # RELOAD NGINX
