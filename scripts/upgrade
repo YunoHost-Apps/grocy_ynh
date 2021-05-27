@@ -68,24 +68,13 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=5
 
-		# Create a temporary directory
-		tmpdir="$(mktemp -d)"
-
-		# Backup the config file in the temp dir
-		cp -R "$final_path/data" "$tmpdir/data"
-
-		# Remove the app directory securely
-		ynh_secure_remove --file="$final_path"
-
 		# Download, check integrity, uncompress and patch the source from app.src
-		ynh_setup_source --dest_dir="$final_path"
-
-		# Copy the admin saved settings from tmp directory to final path	
-		cp -RT "$tmpdir/data" "$final_path/data" 
-
-		# Remove the tmp directory securely
-		ynh_secure_remove --file="$tmpdir"
+		ynh_setup_source --dest_dir="$final_path" --keep="$final_path/data"
 fi
+
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -117,14 +106,8 @@ ynh_add_fpm_config --package="$extra_php_dependencies"
 
 ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
 
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-
-# Set permissions to app files
-chown -R $app: $final_path
-chmod o-rwx $final_path
-chmod -R 755 $final_path/data
+chmod 400 "$final_path/data/config.php"
+chown $app "$final_path/data/config.php"
 
 #=================================================
 # RELOAD NGINX

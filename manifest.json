@@ -6,15 +6,21 @@
         "en": "Web-based groceries & household management solution for your home",
         "fr": "Solution Web de gestion d'épicerie et de gestion de la maison"
     },
-    "version": "3.0.1~ynh2",
-    "url": "https://github.com/grocy/grocy",
+    "version": "3.0.1~ynh3",
+    "url": "https://grocy.info",
+    "upstream": {
+        "license": "MIT",
+        "website": "https://grocy.info/",
+        "demo": "https://en.demo.grocy.info/stockoverview",
+        "code": "https://github.com/grocy/grocy"
+    },
     "license": "MIT",
     "maintainer": {
         "name": "",
         "email": ""
     },
     "requirements": {
-        "yunohost": ">= 4.1.7"
+        "yunohost": ">= 4.2.0"
     },
     "multi_instance": true,
     "services": [
