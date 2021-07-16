@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Web-based groceries & household management solution for your home
 
-**Shipped version:** 3.1.0~ynh0
+**Shipped version:** 3.1.0~ynh1
 
 **Demo:** https://en.demo.grocy.info/stockoverview
 
@@ -30,9 +30,11 @@ Web-based groceries & household management solution for your home
 ## Configuration
 
  Default login
- 	* user:     **admin**  
- 	* password: **admin**
- 
+```
+	user:		**admin**  
+	password:	**admin**
+```
+
 ## Limitations
 
 :warning: For now, Grocy must be installed in a root domain or subdirectory.
