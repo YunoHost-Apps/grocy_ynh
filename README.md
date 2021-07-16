@@ -31,8 +31,8 @@ Web-based groceries & household management solution for your home
 
  Default login
 ```
-	user:		**admin**  
-	password:	**admin**
+	user:		admin
+	password:	admin
 ```
 
 ## Limitations

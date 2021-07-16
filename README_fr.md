@@ -27,8 +27,8 @@ Solution Web de gestion d'épicerie et de gestion de la maison
 
 Connexion par défaut
 ```
-	utilisateur : **admin**
-	mot de passe : **admin**
+	utilisateur :	admin
+	mot de passe :	admin
 ```
 
 ## Limitations
