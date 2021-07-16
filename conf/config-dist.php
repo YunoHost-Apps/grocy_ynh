@@ -77,10 +77,13 @@ Setting('AUTH_CLASS', 'Grocy\Middleware\DefaultAuthMiddleware');
 // the name of the HTTP header which your reverse proxy uses to pass the username (on successful authentication)
 Setting('REVERSE_PROXY_AUTH_HEADER', 'REMOTE_USER');
 
-// When using LdapAuthMiddleware
-Setting('LDAP_DOMAIN', 'local'); // Example value "local"
+// LDAP options when using LdapAuthMiddleware
 Setting('LDAP_ADDRESS', 'ldap://127.0.0.1:389'); // Example value "ldap://vm-dc2019.local.berrnd.net"
-Setting('LDAP_BASE_DN', 'ou=users,dc=yunohost,dc=org'); // Example value "OU=OU_Users,DC=local,DC=berrnd,DC=net"
+Setting('LDAP_BASE_DN', 'ou=users,dc=yunohost,dc=org'); // Example value "DC=local,DC=berrnd,DC=net"
+Setting('LDAP_BIND_DN', ''); // Example value "CN=grocy_bind_account,OU=service_accounts,DC=local,DC=berrnd,DC=net"
+Setting('LDAP_BIND_PW', ''); // Password for the above account
+Setting('LDAP_USER_FILTER', ''); // Example value "(OU=grocy_users)"
+Setting('LDAP_UID_ATTR', ''); // Windows AD: "sAMAccountName", OpenLDAP: "uid", GLAuth: "cn"
 
 // Set this to true if you want to disable the ability to scan a barcode via the device camera (Browser API)
 Setting('DISABLE_BROWSER_BARCODE_CAMERA_SCANNING', false);
@@ -94,6 +97,34 @@ Setting('MEAL_PLAN_FIRST_DAY_OF_WEEK', '');
 // the array needs to contain the technical/constant names
 // see the file controllers/Users/User.php for possible values
 Setting('DEFAULT_PERMISSIONS', ['ADMIN']);
+
+// 1D (=> Code128) or 2D (=> DataMatrix)
+Setting('GROCYCODE_TYPE', '1D');
+
+// Label printer settings
+// This is the URI that grocy will POST to when asked to print a label
+Setting('LABEL_PRINTER_WEBHOOK', '');
+// This setting decides whether the webhook will be called server- or clientside
+// If the machine grocy runs on has a network connection to the host the webhook receiver is on, this is probably a good idea
+// If, for example, grocy runs in the cloud and your printer daemon runs locally to you, set this to false to let your browser call the webhook instead
+Setting('LABEL_PRINTER_RUN_SERVER', true);
+// Additional parameters supplied to the webhook
+Setting('LABEL_PRINTER_PARAMS', ['font_family' => 'Source Sans Pro (Regular)']);
+// TRUE to use JSON or FALSE to use normal POST request variables
+Setting('LABEL_PRINTER_HOOK_JSON', false);
+
+// Thermal printer options
+// Thermal printers are receipt printers, not regular printers,
+// the printer must support the ESC/POS protocol, see https://github.com/mike42/escpos-php
+Setting('TPRINTER_IS_NETWORK_PRINTER', false); // Set to true if it's' a network printer
+Setting('TPRINTER_PRINT_QUANTITY_NAME', true); // Set to false if you do not want to print the quantity names (related to the shopping list)
+Setting('TPRINTER_PRINT_NOTES', true); // Set to false if you do not want to print notes (related to the shopping list)
+Setting('TPRINTER_IP', '127.0.0.1'); // IP of the network printer (does only matter if it's a network printer)
+Setting('TPRINTER_PORT', 9100); // Port of the network printer
+Setting('TPRINTER_CONNECTOR', '/dev/usb/lp0'); // Printer device (does only matter if you use a locally attached printer)
+// For USB on Linux this is often '/dev/usb/lp0', for serial printers it could be similar to '/dev/ttyS0'
+// Make sure that the user that runs the webserver has permissions to write to the printer - on Linux add your webserver user to the LP group with usermod -a -G lp www-data
+
 
 // Default user settings
 // These settings can be changed per user, here the defaults
@@ -117,6 +148,7 @@ DefaultUserSetting('product_presets_product_group_id', -1); // Default product g
 DefaultUserSetting('product_presets_qu_id', -1); // Default quantity unit id for new products (-1 means no quantity unit is preset)
 DefaultUserSetting('stock_decimal_places_amounts', 4); // Default decimal places allowed for amounts
 DefaultUserSetting('stock_decimal_places_prices', 2); // Default decimal places allowed for prices
+DefaultUserSetting('stock_auto_decimal_separator_prices', false);
 DefaultUserSetting('stock_due_soon_days', 5);
 DefaultUserSetting('stock_default_purchase_amount', 0);
 DefaultUserSetting('stock_default_consume_amount', 1);
@@ -124,7 +156,7 @@ DefaultUserSetting('stock_default_consume_amount_use_quick_consume_amount', fals
 DefaultUserSetting('scan_mode_consume_enabled', false);
 DefaultUserSetting('scan_mode_purchase_enabled', false);
 DefaultUserSetting('show_icon_on_stock_overview_page_when_product_is_on_shopping_list', true);
-DefaultUserSetting('show_purchased_date_on_purchase', false); // Wheter the purchased date should be editable on purchase (defaults to today otherwise)
+DefaultUserSetting('show_purchased_date_on_purchase', false); // Whether the purchased date should be editable on purchase (defaults to today otherwise)
 DefaultUserSetting('show_warning_on_purchase_when_due_date_is_earlier_than_next', true); // Show a warning on purchase when the due date of the purchased product is earlier than the next due date in stock
 
 // Shopping list settings
@@ -143,9 +175,8 @@ DefaultUserSetting('batteries_due_soon_days', 5);
 // Tasks settings
 DefaultUserSetting('tasks_due_soon_days', 5);
 
-// If the page should be automatically reloaded when there was
-// an external change
-DefaultUserSetting('auto_reload_on_db_change', true);
+// If the page should be automatically reloaded when there was an external change
+DefaultUserSetting('auto_reload_on_db_change', false);
 
 // Show a clock in the header next to the logo or not
 DefaultUserSetting('show_clock_in_header', false);
@@ -158,6 +189,7 @@ DefaultUserSetting('quagga2_halfsample', false);
 DefaultUserSetting('quagga2_patchsize', 'medium');
 DefaultUserSetting('quagga2_frequency', 10);
 DefaultUserSetting('quagga2_debug', true);
+
 
 // Feature flags
 // grocy was initially about "stock management for your household", many other things
@@ -172,6 +204,7 @@ Setting('FEATURE_FLAG_TASKS', true);
 Setting('FEATURE_FLAG_BATTERIES', true);
 Setting('FEATURE_FLAG_EQUIPMENT', true);
 Setting('FEATURE_FLAG_CALENDAR', true);
+Setting('FEATURE_FLAG_LABEL_PRINTER', false);
 
 // Sub feature flags
 Setting('FEATURE_FLAG_STOCK_PRICE_TRACKING', true);
@@ -182,7 +215,8 @@ Setting('FEATURE_FLAG_STOCK_PRODUCT_FREEZING', true);
 Setting('FEATURE_FLAG_STOCK_BEST_BEFORE_DATE_FIELD_NUMBER_PAD', true); // Activate the number pad in due date fields on (supported) mobile browsers
 Setting('FEATURE_FLAG_SHOPPINGLIST_MULTIPLE_LISTS', true);
 Setting('FEATURE_FLAG_CHORES_ASSIGNMENTS', true);
+Setting('FEATURE_FLAG_THERMAL_PRINTER', false);
 
 // Feature settings
 Setting('FEATURE_SETTING_STOCK_COUNT_OPENED_PRODUCTS_AGAINST_MINIMUM_STOCK_AMOUNT', true); // When set to true, opened items will be counted as missing for calculating if a product is below its minimum stock amount
-Setting('FEATURE_FLAG_AUTO_TORCH_ON_WITH_CAMERA', true); // Enables the torch automaticaly (if the device has one)
+Setting('FEATURE_FLAG_AUTO_TORCH_ON_WITH_CAMERA', true); // Enables the torch automatically (if the device has one)
