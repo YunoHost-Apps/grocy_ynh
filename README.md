@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Web-based groceries & household management solution for your home
 
-**Shipped version:** 3.1.0~ynh2
+**Shipped version:** 3.1.1~ynh1
 
 **Demo:** https://en.demo.grocy.info/stockoverview
 
