@@ -30,8 +30,7 @@
     "arguments": {
         "install": [{
                 "name": "domain",
-                "type": "domain",
-                "example": "grocy.example.com"
+                "type": "domain"
             },
             {
                 "name": "language",
