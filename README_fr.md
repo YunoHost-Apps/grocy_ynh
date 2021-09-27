@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Solution Web de gestion d'épicerie et de gestion de la maison
 
-**Version incluse :** 3.1.1~ynh1
+**Version incluse :** 3.1.2~ynh1
 
 **Démo :** https://en.demo.grocy.info/stockoverview
 
