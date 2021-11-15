@@ -90,7 +90,7 @@ ynh_script_progression --message="Configuring PHP-FPM..." --weight=3
 
 # Create a dedicated PHP-FPM config
 ynh_add_fpm_config
-phpversion=$YNH_PHP_VERSION
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # MODIFY A CONFIG FILE
