@@ -60,7 +60,10 @@ if ynh_legacy_permissions_exists; then
 	ynh_app_setting_delete --app=$app --key=is_public
 fi
 
-ynh_permission_create --permission="api" --url="/api" --allowed="visitors" --auth_header="false" --show_tile="false" --protected="true"
+# Add /api permission if needed
+if ! ynh_permission_exists --permission="api"; then
+        ynh_permission_create --permission="api" --url="/api" --allowed="visitors" --auth_header="false" --show_tile="false" --protected="true"
+fi
 
 #=================================================
 # CREATE DEDICATED USER
