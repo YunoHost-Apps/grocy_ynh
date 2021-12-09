@@ -11,9 +11,9 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 ## Vue d'ensemble
 
-Solution Web de gestion d'épicerie et de gestion de la maison
+grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Version incluse :** 3.1.3~ynh2
+**Version incluse :** 3.1.3~ynh3
 
 **Démo :** https://en.demo.grocy.info/stockoverview
 
