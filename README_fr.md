@@ -27,8 +27,8 @@ grocy is a web-based self-hosted groceries & household management solution for y
 
 Connexion par défaut
 ```
-	utilisateur : **admin**
-	mot de passe : **admin**
+	utilisateur : admin
+	mot de passe : admin
 ```
 
 ## Limitations
