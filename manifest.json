@@ -42,7 +42,7 @@
                 },
                 "choices": ["de", "en", "es", "fr", "it", "pt"],
                 "default": "fr"
-            },        
+            },
             {
                 "name": "is_public",
                 "type": "boolean",
