@@ -131,10 +131,10 @@ ynh_add_fpm_config --phpversion=$phpversion --usage=$fpm_usage --footprint=$fpm_
 # MODIFY A CONFIG FILE
 #=================================================
 
-#ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
+ynh_add_config --template="../conf/config-dist.php" --destination="$final_path/data/config.php"
 
-#chmod 400 "$final_path/data/config.php"
-#chown $app "$final_path/data/config.php"
+chmod 400 "$final_path/data/config.php"
+chown $app "$final_path/data/config.php"
 
 #=================================================
 # RELOAD NGINX
