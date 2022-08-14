@@ -19,6 +19,7 @@ grocy is a web-based self-hosted groceries & household management solution for y
 
 **Shipped version:** 3.3.1~ynh1
 
+
 **Demo:** https://en.demo.grocy.info/stockoverview
 
 ## Screenshots
