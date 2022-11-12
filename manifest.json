@@ -6,7 +6,7 @@
         "en": "Web-based groceries & household management solution for your home",
         "fr": "Solution Web de gestion d'épicerie et de gestion de la maison"
     },
-    "version": "3.3.1~ynh2",
+    "version": "3.3.2~ynh1",
     "url": "https://grocy.info",
     "upstream": {
         "license": "MIT",

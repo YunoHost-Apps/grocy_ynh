@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/grocy/grocy/releases/download/v3.3.1/grocy_3.3.1.zip
-SOURCE_SUM=5ea8d80e16bdc307c84c40d166c9c7fe283ef6ad7f49f288c10620d6cbd46973
+SOURCE_URL=https://github.com/grocy/grocy/releases/download/v3.3.2/grocy_3.3.2.zip
+SOURCE_SUM=285e33c6b0bcae545468129ce222c8b7a4d2007309fad396a6d32c55c8b1556b
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=false
