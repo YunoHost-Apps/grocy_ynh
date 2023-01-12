@@ -23,6 +23,7 @@ language=$(ynh_app_setting_get --app=$app --key=language)
 phpversion=$YNH_PHP_VERSION
 
 fpm_footprint=$(ynh_app_setting_get --app=$app --key=fpm_footprint)
+fpm_free_footprint=$(ynh_app_setting_get --app=$app --key=fpm_free_footprint)
 fpm_usage=$(ynh_app_setting_get --app=$app --key=fpm_usage)
 
 #=================================================
@@ -58,14 +59,20 @@ fi
 
 # If fpm_footprint doesn't exist, create it
 if [ -z "$fpm_footprint" ]; then
-	fpm_footprint=low
-	ynh_app_setting_set --app=$app --key=fpm_footprint --value=$fpm_footprint
+    fpm_footprint=low
+    ynh_app_setting_set --app=$app --key=fpm_footprint --value=$fpm_footprint
+fi
+
+# If fpm_free_footprint doesn't exist, create it
+if [ -z "$fpm_free_footprint" ]; then
+    fpm_free_footprint=0
+    ynh_app_setting_set --app=$app --key=fpm_free_footprint --value=$fpm_free_footprint
 fi
 
 # If fpm_usage doesn't exist, create it
 if [ -z "$fpm_usage" ]; then
-	fpm_usage=low
-	ynh_app_setting_set --app=$app --key=fpm_usage --value=$fpm_usage
+    fpm_usage=low
+    ynh_app_setting_set --app=$app --key=fpm_usage --value=$fpm_usage
 fi
 
 # Cleaning legacy permissions
@@ -126,6 +133,7 @@ ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=1
 
 # Create a dedicated php-fpm config
 ynh_add_fpm_config --phpversion=$phpversion --usage=$fpm_usage --footprint=$fpm_footprint
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # MODIFY A CONFIG FILE
