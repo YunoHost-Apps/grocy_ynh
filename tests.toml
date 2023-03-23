@@ -1,0 +1,7 @@
+test_format = 1.0
+
+[default]
+
+    exclude = ["install.subdir"]
+
+    test_upgrade_from.b9c2675f.name = "Upgrade from 3.2.0"
