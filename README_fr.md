@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Version incluse :** 3.3.2~ynh2
+**Version incluse :** 3.3.2~ynh3
 
 **Démo :** https://en.demo.grocy.info/stockoverview
 
