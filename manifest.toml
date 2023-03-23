@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "3.3.2~ynh2"
+version = "3.3.2~ynh3"
 
 maintainers = ["eric_G"]
 
