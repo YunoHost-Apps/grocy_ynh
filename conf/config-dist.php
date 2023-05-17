@@ -88,7 +88,7 @@ Setting('LDAP_BASE_DN', 'ou=users,dc=yunohost,dc=org'); // Example value "DC=loc
 Setting('LDAP_BIND_DN', ''); // Example value "CN=grocy_bind_account,OU=service_accounts,DC=local,DC=berrnd,DC=net"
 Setting('LDAP_BIND_PW', ''); // Password for the above account
 Setting('LDAP_USER_FILTER', '(&(|(objectclass=posixAccount))(uid={{username}})(permission=cn=__APP__.main,ou=permission,dc=yunohost,dc=org))'); // Example value "(OU=grocy_users)"
-Setting('LDAP_UID_ATTR', ''); // Windows AD: "sAMAccountName", OpenLDAP: "uid", GLAuth: "cn"
+Setting('LDAP_UID_ATTR', 'uid'); // Windows AD: "sAMAccountName", OpenLDAP: "uid", GLAuth: "cn"
 
 // Default permissions for new users
 // the array needs to contain the technical/constant names
