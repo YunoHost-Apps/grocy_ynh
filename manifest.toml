@@ -45,7 +45,8 @@ ram.runtime = "50M"
         url = "https://github.com/grocy/grocy/releases/download/v3.3.2/grocy_3.3.2.zip"
         sha256 = "285e33c6b0bcae545468129ce222c8b7a4d2007309fad396a6d32c55c8b1556b"
         in_subdir = false
-        autoupdate.strategy = "latest_github_tag"
+        autoupdate.strategy = "latest_github_release"
+        autoupdate.asset = "grocy_*.zip"
 
     [resources.system_user]
 
