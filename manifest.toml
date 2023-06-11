@@ -16,7 +16,7 @@ demo = "https://en.demo.grocy.info/stockoverview"
 code = "https://github.com/grocy/grocy"
 
 [integration]
-yunohost = ">= 11.1.19"
+yunohost = ">= 11.1.20"
 architectures = "all"
 multi_instance = true
 ldap =  true
@@ -56,4 +56,4 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages = "php8.1-ldap php8.1-mbstring php8.1-fileinfo php8.1-sqlite3 php8.1-gd php8.1-intl"
+    packages = "php8.2-ldap php8.2-mbstring php8.2-fileinfo php8.2-sqlite3 php8.2-gd php8.2-intl"
