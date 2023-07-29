@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "3.3.2~ynh3"
+version = "4.0.0~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -16,7 +16,7 @@ demo = "https://en.demo.grocy.info/stockoverview"
 code = "https://github.com/grocy/grocy"
 
 [integration]
-yunohost = ">= 11.1.20"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
 ldap =  true
@@ -42,8 +42,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/grocy/grocy/releases/download/v3.3.2/grocy_3.3.2.zip"
-        sha256 = "285e33c6b0bcae545468129ce222c8b7a4d2007309fad396a6d32c55c8b1556b"
+        url = "https://github.com/grocy/grocy/releases/download/v4.0.0/grocy_4.0.0.zip"
+        sha256 = "49e8be5183396b3cd25a09e682e7f10e5e7249b609e760c118f7349d38e7aaa7"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
         autoupdate.asset = "grocy_*.zip"
