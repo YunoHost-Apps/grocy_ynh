@@ -87,7 +87,7 @@ Setting('LDAP_ADDRESS', 'ldap://127.0.0.1:389'); // Example value "ldap://vm-dc2
 Setting('LDAP_BASE_DN', 'ou=users,dc=yunohost,dc=org'); // Example value "DC=local,DC=berrnd,DC=net"
 Setting('LDAP_BIND_DN', ''); // Example value "CN=grocy_bind_account,OU=service_accounts,DC=local,DC=berrnd,DC=net"
 Setting('LDAP_BIND_PW', ''); // Password for the above account
-Setting('LDAP_USER_FILTER', '(&(|(objectclass=posixAccount))(uid={{username}})(permission=cn=__APP__.main,ou=permission,dc=yunohost,dc=org))'); // Example value "(OU=grocy_users)"
+Setting('LDAP_USER_FILTER', '(&(|(objectclass=posixAccount))(permission=cn=__APP__.main,ou=permission,dc=yunohost,dc=org))'); // Example value "(OU=grocy_users)"
 Setting('LDAP_UID_ATTR', 'uid'); // Windows AD: "sAMAccountName", OpenLDAP: "uid", GLAuth: "cn"
 
 // Default permissions for new users
