@@ -46,7 +46,7 @@ ram.runtime = "50M"
         sha256 = "49e8be5183396b3cd25a09e682e7f10e5e7249b609e760c118f7349d38e7aaa7"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
-        autoupdate.asset = "grocy_*.zip"
+        autoupdate.asset = "grocy_.*.zip"
 
     [resources.system_user]
 
