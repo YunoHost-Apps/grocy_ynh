@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "4.0.0~ynh2"
+version = "4.0.0~ynh3"
 
 maintainers = ["eric_G"]
 
@@ -60,4 +60,4 @@ ram.runtime = "50M"
     api.protected = true
 
     [resources.apt]
-    packages = "php8.2-ldap php8.2-mbstring php8.2-fileinfo php8.2-sqlite3 php8.2-gd php8.2-intl"
+    packages = "php8.1-ldap php8.1-mbstring php8.1-fileinfo php8.1-sqlite3 php8.1-gd php8.1-intl"
