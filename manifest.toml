@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "4.0.0~ynh2"
+version = "4.0.0~ynh3"
 
 maintainers = ["eric_G"]
 
@@ -46,7 +46,7 @@ ram.runtime = "50M"
         sha256 = "49e8be5183396b3cd25a09e682e7f10e5e7249b609e760c118f7349d38e7aaa7"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
-        autoupdate.asset = "grocy_*.zip"
+        autoupdate.asset = "grocy_.*.zip"
 
     [resources.system_user]
 
@@ -60,4 +60,4 @@ ram.runtime = "50M"
     api.protected = true
 
     [resources.apt]
-    packages = "php8.2-ldap php8.2-mbstring php8.2-fileinfo php8.2-sqlite3 php8.2-gd php8.2-intl"
+    packages = "php8.1-ldap php8.1-mbstring php8.1-fileinfo php8.1-sqlite3 php8.1-gd php8.1-intl"
