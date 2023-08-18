@@ -27,7 +27,6 @@ ram.runtime = "50M"
 [install]
     [install.domain]
     type = "domain"
-    full_domain = true
 
     [install.language]
     ask.en = "Choose the application language"
