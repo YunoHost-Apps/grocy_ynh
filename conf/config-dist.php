@@ -14,8 +14,9 @@
 // The settings defined here below
 
 // Either "production", "dev", "demo" or "prerelease"
-// When not "production", authentication will be disabled and
-// demo data will be populated during database migrations
+// When not "production", the application will work in a demo mode which means
+// authentication is disabled and some demo data will be generated during the database schema migration
+// (pass the query parameter "nodemodata", e.g. https://grocy.example.com/?nodemodata to skip that)
 Setting('MODE', 'production');
 
 // The directory name of one of the available localization folders
@@ -41,7 +42,11 @@ Setting('MEAL_PLAN_FIRST_DAY_OF_WEEK', '');
 // ISO 4217 code of the currency ("USD", "EUR", "GBP", etc.)
 Setting('CURRENCY', 'EUR');
 
-// When running grocy in a subdirectory, this should be set to the relative path, otherwise empty
+// Your preferred unit for energy
+// E.g. "kcal" or "kJ" or something else (doesn't really matter, it's only used to display energy values)
+Setting('ENERGY_UNIT', 'kcal');
+
+// When running Grocy in a subdirectory, this should be set to the relative path, otherwise empty
 // It needs to be set to the part (of the URL) AFTER the document root,
 // if URL rewriting is disabled, including index.php
 // Example with URL Rewriting support:
@@ -100,7 +105,7 @@ Setting('GROCYCODE_TYPE', '1D');
 
 
 // Label printer settings
-Setting('LABEL_PRINTER_WEBHOOK', ''); // The URI that grocy will POST to when asked to print a label
+Setting('LABEL_PRINTER_WEBHOOK', ''); // The URI that Grocy will POST to when asked to print a label
 Setting('LABEL_PRINTER_RUN_SERVER', true); // Whether the webhook will be called server- or client-side
 Setting('LABEL_PRINTER_PARAMS', ['font_family' => 'Source Sans Pro (Regular)']); // Additional parameters supplied to the webhook
 Setting('LABEL_PRINTER_HOOK_JSON', false); // TRUE to use JSON or FALSE to use normal POST request variables
@@ -140,6 +145,7 @@ Setting('FEATURE_FLAG_STOCK_PRODUCT_OPENED_TRACKING', true);
 Setting('FEATURE_FLAG_STOCK_PRODUCT_FREEZING', true);
 Setting('FEATURE_FLAG_STOCK_BEST_BEFORE_DATE_FIELD_NUMBER_PAD', true); // Activate the number pad in due date fields on (supported) mobile browsers
 Setting('FEATURE_FLAG_SHOPPINGLIST_MULTIPLE_LISTS', true);
+Setting('FEATURE_FLAG_RECIPES_MEALPLAN', true);
 Setting('FEATURE_FLAG_CHORES_ASSIGNMENTS', true);
 Setting('FEATURE_FLAG_THERMAL_PRINTER', false);
 
