@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "4.0.1~ynh2"
+version = "4.0.2~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -41,8 +41,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/grocy/grocy/releases/download/v4.0.1/grocy_4.0.1.zip"
-        sha256 = "1deb09382eef102b591c4500b68e4027829dbb21d71ae8637b692daa5ec33a09"
+        url = "https://github.com/grocy/grocy/releases/download/v4.0.2/grocy_4.0.2.zip"
+        sha256 = "6615df64a99f83c952cc4006223ecb3087ef6871b5158e63fbf3a93824f19b77"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
         autoupdate.asset = "grocy_.*.zip"
