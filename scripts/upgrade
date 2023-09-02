@@ -48,6 +48,7 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$install_dir" --keep="data"
+    ynh_secure_remove --file="$install_dir/data/viewcache/*"
 fi
 
 chmod -R o-rwx "$install_dir"
