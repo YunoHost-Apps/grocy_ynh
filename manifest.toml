@@ -24,25 +24,27 @@ sso = false
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
+
 [install]
+
     [install.domain]
     type = "domain"
-
-    [install.language]
-    ask.en = "Choose the application language"
-    ask.fr = "Choisissez la langue de l'application"
-    type = "string"
-    choices = ["de", "en", "es", "fr", "it", "pt"]
-    default = "fr"
 
     [install.init_main_permission]
     type = "group"
     default = "visitors"
+    
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "select"
+    choices = ["de", "en", "es", "fr", "it", "pt"]
+    default = "fr"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/grocy/grocy/releases/download/v4.0.2/grocy_4.0.2.zip"
-        sha256 = "6615df64a99f83c952cc4006223ecb3087ef6871b5158e63fbf3a93824f19b77"
+        url = "https://github.com/grocy/grocy/releases/download/v4.0.3/grocy_4.0.3.zip"
+        sha256 = "2814ec8badf84a8960034d5e46d84cb96c7b0c817bae1bc948fc621f2b8a491f"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
         autoupdate.asset = "grocy_.*.zip"
