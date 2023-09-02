@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Shipped version:** 4.0.2~ynh1
+**Shipped version:** 4.0.3~ynh1
 
 **Demo:** https://en.demo.grocy.info/stockoverview
 
