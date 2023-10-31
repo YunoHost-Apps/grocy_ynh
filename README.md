@@ -30,7 +30,7 @@ grocy is a web-based self-hosted groceries & household management solution for y
 
 * Official app website: <https://grocy.info/>
 * Upstream app code repository: <https://github.com/grocy/grocy>
-* YunoHost documentation for this app: <https://yunohost.org/app_grocy>
+* YunoHost Store: <https://apps.yunohost.org/app/grocy>
 * Report a bug: <https://github.com/YunoHost-Apps/grocy_ynh/issues>
 
 ## Developer info
