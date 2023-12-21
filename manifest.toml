@@ -19,8 +19,11 @@ code = "https://github.com/grocy/grocy"
 yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
+
 ldap =  true
+
 sso = false
+
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -61,4 +64,4 @@ ram.runtime = "50M"
     api.protected = true
 
     [resources.apt]
-    packages = "php8.2-ldap php8.2-mbstring php8.2-fileinfo php8.2-sqlite3 php8.2-gd php8.2-intl"
+    packages = "php8.2-ldap, php8.2-mbstring, php8.2-fileinfo, php8.2-sqlite3, php8.2-gd, php8.2-intl"
