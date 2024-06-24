@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=5
 
-ynh_setup_source --dest_dir="$install_dir" --keep="data"
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="data"
 ynh_secure_remove --file="$install_dir/data/viewcache/*"
 
 chmod -R o-rwx "$install_dir"
