@@ -1,53 +1,41 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+ynh_script_progression "Ensuring downward compatibility..."
 
 # If fpm_footprint doesn't exist, create it
 if [ -z "${fpm_footprint:-}" ]; then
     fpm_footprint=low
-    ynh_app_setting_set --app=$app --key=fpm_footprint --value=$fpm_footprint
+# REMOVEME ? Everything about fpm_footprint is removed in helpers2.1... |     ynh_app_setting_set --key=fpm_footprint --value=$fpm_footprint
 fi
 
 # If fpm_free_footprint doesn't exist, create it
 if [ -z "${fpm_free_footprint:-}" ]; then
     fpm_free_footprint=0
-    ynh_app_setting_set --app=$app --key=fpm_free_footprint --value=$fpm_free_footprint
+# REMOVEME ? Everything about fpm_free_footprint is removed in helpers2.1... |     ynh_app_setting_set --key=fpm_free_footprint --value=$fpm_free_footprint
 fi
 
 # If fpm_usage doesn't exist, create it
 if [ -z "${fpm_usage:-}" ]; then
     fpm_usage=low
-    ynh_app_setting_set --app=$app --key=fpm_usage --value=$fpm_usage
+# REMOVEME ? Everything about fpm_usage is removed in helpers2.1... |     ynh_app_setting_set --key=fpm_usage --value=$fpm_usage
 fi
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
+if ynh_app_upstream_version_changed
 then
-	ynh_script_progression --message="Upgrading source files..." --weight=5
+	ynh_script_progression "Upgrading source files..."
 
 	ynh_setup_source --dest_dir="$install_dir" --keep="data"
-    ynh_secure_remove --file="$install_dir/data/viewcache/*"
+    ynh_safe_rm "$install_dir/data/viewcache/*"
 fi
 
 chmod -R o-rwx "$install_dir"
@@ -56,18 +44,18 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=1
+ynh_script_progression "Upgrading NGINX web server configuration..."
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 # Create a dedicated php-fpm config
-ynh_add_fpm_config --usage=$fpm_usage --footprint=$fpm_footprint
+ynh_config_add_phpfpm
 
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 
-#ynh_add_config --template="../conf/config-dist.php" --destination="$install_dir/data/config.php"
+#ynh_config_add --template="config-dist.php" --destination="$install_dir/data/config.php"
 
 #chmod 400 "$install_dir/data/config.php"
 #chown $app "$install_dir/data/config.php"
@@ -75,4 +63,4 @@ ynh_add_fpm_config --usage=$fpm_usage --footprint=$fpm_footprint
 #=================================================
 # END OF SCRIPT
 #=================================================
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
