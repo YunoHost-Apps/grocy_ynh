@@ -18,7 +18,7 @@
 
 grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**分发版本：** 4.2.0~ynh1
+**分发版本：** 4.2.0~ynh2
 
 **演示：** <https://en.demo.grocy.info/stockoverview>
 
