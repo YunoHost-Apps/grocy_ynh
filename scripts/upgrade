@@ -1,21 +1,16 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Upgrading source files..." --weight=5
+ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="data"
-ynh_secure_remove --file="$install_dir/data/viewcache/*"
+ynh_setup_source --dest_dir="$install_dir" --keep="data"
+
+ynh_safe_rm "$install_dir/data/viewcache/*"
 
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
@@ -23,23 +18,22 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=1
+ynh_script_progression "Upgrading NGINX web server configuration..."
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-# Create a dedicated php-fpm config
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 
-#ynh_add_config --template="config-dist.php" --destination="$install_dir/data/config.php"
+ynh_config_add --template="config-dist.php" --destination="$install_dir/data/config.php"
 
-#chmod 400 "$install_dir/data/config.php"
-#chown $app "$install_dir/data/config.php"
+chmod 400 "$install_dir/data/config.php"
+chown $app "$install_dir/data/config.php"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
