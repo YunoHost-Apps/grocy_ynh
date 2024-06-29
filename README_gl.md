@@ -5,7 +5,7 @@ NON debe editarse manualmente.
 
 # Grocy para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/grocy.svg)](https://dash.yunohost.org/appci/app/grocy) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/grocy.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/grocy.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/grocy.svg)](https://ci-apps.yunohost.org/ci/apps/grocy/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/grocy.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/grocy.maintain.svg)
 
 [![Instalar Grocy con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=grocy)
 
