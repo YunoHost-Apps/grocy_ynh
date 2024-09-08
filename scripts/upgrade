@@ -13,17 +13,18 @@ ynh_setup_source --dest_dir="$install_dir" --ful_replace --keep="data"
 ynh_safe_rm "$install_dir/data/viewcache/*"
 
 #=================================================
-# NGINX CONFIGURATION
+# REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression "Upgrading NGINX web server configuration..."
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_nginx
 
 ynh_config_add_phpfpm
 
 #=================================================
-# MODIFY A CONFIG FILE
+# UPDATE A CONFIG FILE
 #=================================================
+#ynh_script_progression "Updating $app's configuration files..."
 
 #ynh_config_add --template="config-dist.php" --destination="$install_dir/data/config.php"
 
