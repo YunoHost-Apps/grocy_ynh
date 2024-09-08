@@ -10,13 +10,10 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
-
 #=================================================
-# NGINX CONFIGURATION
+# APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Configuring NGINX web server..."
+ynh_script_progression "Adding $app's configuration files..."
 
 ynh_config_add_nginx
 
@@ -28,9 +25,6 @@ ynh_config_add_phpfpm
 ynh_script_progression "Adding $app's configuration..."
 
 ynh_config_add --template="config-dist.php" --destination="$install_dir/data/config.php"
-
-chmod 400 "$install_dir/data/config.php"
-chown $app "$install_dir/data/config.php"
 
 #=================================================
 # END OF SCRIPT
