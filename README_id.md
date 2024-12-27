@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Grocy untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/grocy.svg)](https://ci-apps.yunohost.org/ci/apps/grocy/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/grocy.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/grocy.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/grocy)](https://ci-apps.yunohost.org/ci/apps/grocy/)
+![Status kerja](https://apps.yunohost.org/badge/state/grocy)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/grocy)
 
 [![Pasang Grocy dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=grocy)
 

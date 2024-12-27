@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Grocy YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/grocy.svg)](https://ci-apps.yunohost.org/ci/apps/grocy/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/grocy.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/grocy.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/grocy)](https://ci-apps.yunohost.org/ci/apps/grocy/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/grocy)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/grocy)
 
 [![Instalatu Grocy YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=grocy)
 
