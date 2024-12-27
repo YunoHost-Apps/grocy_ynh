@@ -5,7 +5,9 @@
 
 # Grocy для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/grocy.svg)](https://ci-apps.yunohost.org/ci/apps/grocy/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/grocy.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/grocy.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/grocy)](https://ci-apps.yunohost.org/ci/apps/grocy/)
+![Состояние работы](https://apps.yunohost.org/badge/state/grocy)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/grocy)
 
 [![Установите Grocy с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=grocy)
 
