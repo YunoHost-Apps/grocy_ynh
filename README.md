@@ -18,7 +18,7 @@ It shall NOT be edited by hand.
 
 ## Overview
 
-grocy is a web-based self-hosted groceries & household management solution for your home.
+Grocy is a web-based self-hosted groceries & household management solution for your home.
 
 **Shipped version:** 4.4.0~ynh1
 
