@@ -1,0 +1,1 @@
+Grocy est une solution de gestion de l'épicerie et de l'entretien ménager basée sur le web et auto-hébergée pour votre maison.
