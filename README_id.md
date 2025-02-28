@@ -20,7 +20,7 @@ Ini TIDAK boleh diedit dengan tangan.
 
 Grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Versi terkirim:** 4.4.1~ynh1
+**Versi terkirim:** 4.4.2~ynh1
 
 **Demo:** <https://en.demo.grocy.info/stockoverview>
 
