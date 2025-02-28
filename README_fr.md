@@ -20,7 +20,7 @@ Il NE doit PAS être modifié à la main.
 
 Grocy est une solution de gestion de l'épicerie et de l'entretien ménager basée sur le web et auto-hébergée pour votre maison.
 
-**Version incluse :** 4.4.1~ynh1
+**Version incluse :** 4.4.2~ynh1
 
 **Démo :** <https://en.demo.grocy.info/stockoverview>
 
