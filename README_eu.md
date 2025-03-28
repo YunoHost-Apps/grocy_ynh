@@ -20,7 +20,7 @@ EZ editatu eskuz.
 
 Grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Paketatutako bertsioa:** 4.4.2~ynh1
+**Paketatutako bertsioa:** 4.5.0~ynh1
 
 **Demoa:** <https://en.demo.grocy.info/stockoverview>
 
@@ -39,7 +39,7 @@ Grocy is a web-based self-hosted groceries & household management solution for y
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/grocy_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/grocy_ynh/tree/testing --debug
