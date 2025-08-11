@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "4.4.2~ynh1"
+version = "4.5.0~ynh1"
 
 maintainers = []
 
@@ -24,9 +24,9 @@ multi_instance = true
 ldap =  false
 sso = false
 
-disk = "50M"
-ram.build = "50M"
-ram.runtime = "50M"
+disk = "1000M"
+ram.build = "130M"
+ram.runtime = "70M"
 
 [install]
 
@@ -46,8 +46,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/grocy/grocy/releases/download/v4.4.2/grocy_4.4.2.zip"
-        sha256 = "bcf6d4b1d74fecd6eac1bfba3b0cfebf399dce69a4804bb8251448df1d9500f3"
+        url = "https://github.com/grocy/grocy/releases/download/v4.5.0/grocy_4.5.0.zip"
+        sha256 = "f8b72c9dd0415d899e308d100c07be85e059c9927f6c07db039cba75903e9d95"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
         autoupdate.asset = "grocy_.*.zip"
@@ -65,4 +65,4 @@ ram.runtime = "50M"
     api.protected = true
 
     [resources.apt]
-    packages = "php8.3-ldap, php8.3-mbstring, php8.3-fileinfo, php8.3-sqlite3, php8.3-gd, php8.3-intl"
+    packages = "php8.4-ldap, php8.4-mbstring, php8.4-fileinfo, php8.4-sqlite3, php8.4-gd, php8.4-intl"

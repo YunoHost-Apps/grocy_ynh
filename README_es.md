@@ -3,7 +3,7 @@ Este archivo README esta generado automaticamente<https://github.com/YunoHost/ap
 No se debe editar a mano.
 -->
 
-# Grocy para Yunohost
+# Grocy para YunoHost
 
 [![Nivel de integración](https://apps.yunohost.org/badge/integration/grocy)](https://ci-apps.yunohost.org/ci/apps/grocy/)
 ![Estado funcional](https://apps.yunohost.org/badge/state/grocy)
@@ -20,7 +20,7 @@ No se debe editar a mano.
 
 Grocy is a web-based self-hosted groceries & household management solution for your home.
 
-**Versión actual:** 4.4.2~ynh1
+**Versión actual:** 4.5.0~ynh1
 
 **Demo:** <https://en.demo.grocy.info/stockoverview>
 
