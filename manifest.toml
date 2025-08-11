@@ -65,4 +65,4 @@ ram.runtime = "50M"
     api.protected = true
 
     [resources.apt]
-    packages = "php8.3-ldap, php8.3-mbstring, php8.3-fileinfo, php8.3-sqlite3, php8.3-gd, php8.3-intl"
+    packages = "php8.4-ldap, php8.4-mbstring, php8.4-fileinfo, php8.4-sqlite3, php8.4-gd, php8.4-intl"
