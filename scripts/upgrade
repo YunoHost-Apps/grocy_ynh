@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -31,4 +30,5 @@ ynh_config_add_phpfpm
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Upgrade of $app completed"
