@@ -30,4 +30,5 @@ ynh_config_add_phpfpm
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Upgrade of $app completed"
