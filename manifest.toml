@@ -5,7 +5,7 @@ name = "Grocy"
 description.en = "Web-based groceries & household management solution for your home"
 description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
 
-version = "4.5.0~ynh1"
+version = "4.5.0~ynh2"
 
 maintainers = []
 
@@ -21,7 +21,7 @@ helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
-ldap =  true
+ldap = true
 sso = false
 
 disk = "1000M"
