@@ -23,9 +23,9 @@ ynh_config_add_phpfpm
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-#ynh_script_progression "Updating $app's configuration files..."
+ynh_script_progression "Updating $app's configuration files..."
 
-#ynh_config_add --template="config-dist.php" --destination="$install_dir/data/config.php"
+ynh_config_add --template="config-dist.php" --destination="$install_dir/data/config.php"
 
 #=================================================
 # END OF SCRIPT
