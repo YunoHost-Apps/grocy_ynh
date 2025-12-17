@@ -19,16 +19,6 @@ Web-based groceries & household management solution for your home
 <a href="https://github.com/YunoHost-Apps/grocy_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
 
-> *This package allows you to install Grocy quickly and simply on a YunoHost server.*  
-> *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
-
-## Overview
-
-Grocy is a web-based self-hosted groceries & household management solution for your home.
-
-**Shipped version:** 4.5.0~ynh1
-
-**Demo:** <https://en.demo.grocy.info/stockoverview>
 
 ## Screenshots
 ![Screenshot of Grocy](./doc/screenshots/stock-en.png)
