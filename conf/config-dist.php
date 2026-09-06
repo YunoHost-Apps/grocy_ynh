@@ -79,9 +79,12 @@ Setting('ENTRY_PAGE', 'stock');
 // places where user context is needed will then use the default (first existing) user
 Setting('DISABLE_AUTH', false);
 
-// Either "Grocy\Middleware\DefaultAuthMiddleware", "Grocy\Middleware\ReverseProxyAuthMiddleware"
-// or any class that implements Grocy\Middleware\AuthMiddleware
-Setting('AUTH_CLASS', 'Grocy\Middleware\LdapAuthMiddleware');
+// A valid fully qualified class name of the authentication middlware to use:
+//  Grocy\Middleware\Auth\DefaultAuthMiddleware: The default which uses the users you create in Grocy
+//  Grocy\Middleware\Auth\ReverseProxyAuthMiddleware: When your reverse proxy handles authentication (see options below)
+//  Grocy\Middleware\Auth\LdapAuthMiddleware: When you want to use your existing LDAP server (see options below)
+// or any other class that implements Grocy\Middleware\Auth\BaseAuthMiddleware
+Setting('AUTH_CLASS', 'Grocy\Middleware\Auth\LdapAuthMiddleware');
 
 // Options when using ReverseProxyAuthMiddleware
 Setting('REVERSE_PROXY_AUTH_HEADER', 'REMOTE_USER'); // The name of the HTTP header which your reverse proxy uses to pass the username (on successful authentication)
