@@ -21,6 +21,10 @@ Setting('MODE', 'production');
 
 // The directory name of one of the available localization folders
 // in the "/localization" directory (e.g. "en" or "de")
+// Grocy uses the first available locale / setting in this order
+// 1. Browser prefered locale
+// 2. The one set in user settings
+// 3. The one defined here below
 Setting('DEFAULT_LOCALE', '__LANGUAGE__');
 
 // This is used to define the first day of a week for calendar views,
@@ -34,9 +38,10 @@ Setting('CALENDAR_SHOW_WEEK_OF_YEAR', true);
 // Set this if you want to have a different start day for the weekly meal plan view,
 // leave empty to use CALENDAR_FIRST_DAY_OF_WEEK (see above)
 // Needs to be a number where Sunday = 0, Monday = 1 and so forth
+// Can also be set to -1 to dynamically start the meal plan week on "today"
 Setting('MEAL_PLAN_FIRST_DAY_OF_WEEK', '');
 
-// To keep it simple: grocy does not handle any currency conversions,
+// To keep it simple: Grocy does not handle any currency conversions,
 // this here is used to format all money values,
 // so doesn't really matter, but needs to be the
 // ISO 4217 code of the currency ("USD", "EUR", "GBP", etc.)
@@ -63,9 +68,10 @@ Setting('BASE_PATH', '');
 Setting('BASE_URL', '/');
 
 // The plugin to use for external barcode lookups,
-// must be the filename (folder /data/plugins) without the .php extension,
-// see /data/plugins/DemoBarcodeLookupPlugin.php for an example implementation
-Setting('STOCK_BARCODE_LOOKUP_PLUGIN', 'DemoBarcodeLookupPlugin');
+// must be the filename (folder "/plugins" for built-in plugins or "/data/plugins" for user plugins) without the .php extension,
+// see /plugins/DemoBarcodeLookupPlugin.php for a commented example implementation
+// Leave empty to disable external barcode lookups
+Setting('STOCK_BARCODE_LOOKUP_PLUGIN', 'OpenFoodFactsBarcodeLookupPlugin');
 
 // If, however, your webserver does not support URL rewriting, set this to true
 Setting('DISABLE_URL_REWRITING', false);
@@ -79,13 +85,16 @@ Setting('ENTRY_PAGE', 'stock');
 // places where user context is needed will then use the default (first existing) user
 Setting('DISABLE_AUTH', false);
 
-// Either "Grocy\Middleware\DefaultAuthMiddleware", "Grocy\Middleware\ReverseProxyAuthMiddleware"
-// or any class that implements Grocy\Middleware\AuthMiddleware
-Setting('AUTH_CLASS', 'Grocy\Middleware\LdapAuthMiddleware');
+// A valid fully qualified class name of the authentication middlware to use:
+//  Grocy\Middleware\Auth\DefaultAuthMiddleware: The default which uses the users you create in Grocy
+//  Grocy\Middleware\Auth\ReverseProxyAuthMiddleware: When your reverse proxy handles authentication (see options below)
+//  Grocy\Middleware\Auth\LdapAuthMiddleware: When you want to use your existing LDAP server (see options below)
+// or any other class that implements Grocy\Middleware\Auth\BaseAuthMiddleware
+Setting('AUTH_CLASS', 'Grocy\Middleware\Auth\LdapAuthMiddleware');
 
 // Options when using ReverseProxyAuthMiddleware
 Setting('REVERSE_PROXY_AUTH_HEADER', 'REMOTE_USER'); // The name of the HTTP header which your reverse proxy uses to pass the username (on successful authentication)
-Setting('REVERSE_PROXY_AUTH_USE_ENV', false); // Set to true if the username is passed as environment variable
+Setting('REVERSE_PROXY_AUTH_USE_ENV', false); // Set to true if the username is passed as an environment variable
 
 // Options when using LdapAuthMiddleware
 Setting('LDAP_ADDRESS', 'ldap://127.0.0.1:389'); // Example value "ldap://vm-dc2019.local.berrnd.net"
@@ -101,14 +110,14 @@ Setting('LDAP_UID_ATTR', 'uid'); // Windows AD: "sAMAccountName", OpenLDAP: "uid
 Setting('DEFAULT_PERMISSIONS', ['ADMIN']);
 
 // "1D" (=> Code128) or "2D" (=> DataMatrix)
-Setting('GROCYCODE_TYPE', '1D');
+Setting('GROCYCODE_TYPE', '2D');
 
 
 // Label printer settings
 Setting('LABEL_PRINTER_WEBHOOK', ''); // The URI that Grocy will POST to when asked to print a label
 Setting('LABEL_PRINTER_RUN_SERVER', true); // Whether the webhook will be called server- or client-side
 Setting('LABEL_PRINTER_PARAMS', ['font_family' => 'Source Sans Pro (Regular)']); // Additional parameters supplied to the webhook
-Setting('LABEL_PRINTER_HOOK_JSON', false); // TRUE to use JSON or FALSE to use normal POST request variables
+Setting('LABEL_PRINTER_HOOK_JSON', true); // TRUE to use JSON or FALSE to use normal POST request variables
 
 
 // Thermal printer options
@@ -178,8 +187,10 @@ DefaultUserSetting('product_presets_product_group_id', -1); // Default product g
 DefaultUserSetting('product_presets_qu_id', -1); // Default quantity unit id for new products (-1 means no quantity unit is preset)
 DefaultUserSetting('product_presets_default_due_days', 0); // Default due days for new products (-1 means that the product will be never overdue)
 DefaultUserSetting('product_presets_treat_opened_as_out_of_stock', true); // Default "Treat opened as out of stock" option for new products
+DefaultUserSetting('product_presets_default_stock_label_type', 0); // "Default stock entry label" option for new products (0 = No label, 1 = Single Label, 2 = Label per unit)
 DefaultUserSetting('stock_decimal_places_amounts', 4); // Default decimal places allowed for amounts
-DefaultUserSetting('stock_decimal_places_prices', 2); // Default decimal places allowed for prices
+DefaultUserSetting('stock_decimal_places_prices_input', 2); // Default decimal places allowed for prices (input)
+DefaultUserSetting('stock_decimal_places_prices_display', 2); // Default decimal places allowed for prices (display)
 DefaultUserSetting('stock_auto_decimal_separator_prices', false);  // If the decimal separator should be set automatically for amount inputs
 DefaultUserSetting('stock_due_soon_days', 5); // The "expiring soon" days
 DefaultUserSetting('stock_default_purchase_amount', 0); // The default amount prefilled on the purchase page
@@ -188,14 +199,19 @@ DefaultUserSetting('stock_default_consume_amount_use_quick_consume_amount', fals
 DefaultUserSetting('scan_mode_consume_enabled', false); // If scan mode on the consume page is enabled
 DefaultUserSetting('scan_mode_purchase_enabled', false); // If scan mode on the purchase page is enabled
 DefaultUserSetting('show_icon_on_stock_overview_page_when_product_is_on_shopping_list', true); // When enabled, an icon is shown on the stock overview page (next to the product name) when the prodcut is currently on a shopping list
+DefaultUserSetting('stock_overview_show_all_out_of_stock_products', false); // By default the stock overview page lists all products which are currently in stock or below their min. stock amount - when this is enabled, all (active) products are always shown
 DefaultUserSetting('show_purchased_date_on_purchase', false); // Whether the purchased date should be editable on purchase (defaults to today otherwise)
 DefaultUserSetting('show_warning_on_purchase_when_due_date_is_earlier_than_next', true); // Show a warning on purchase when the due date of the purchased product is earlier than the next due date in stock
 
 // Shopping list settings
 DefaultUserSetting('shopping_list_to_stock_workflow_auto_submit_when_prefilled', false); // Automatically do the booking using the last price and the amount of the shopping list item, if the product has "Default due days" set
 DefaultUserSetting('shopping_list_show_calendar', false); // When enabled, a small (month view) calendar will be shown on the shopping list page
+DefaultUserSetting('shopping_list_round_up', false); // When enabled, all quantity amounts on the shopping list are always displayed rounded up to the nearest whole number
 DefaultUserSetting('shopping_list_auto_add_below_min_stock_amount', false); // If products should be automatically added to the shopping list when they are below their min. stock amount
 DefaultUserSetting('shopping_list_auto_add_below_min_stock_amount_list_id', 1); // When the above setting is enabled, the id of the shopping list to which the products will be added
+DefaultUserSetting('shopping_list_print_show_header', true); // Default for the shopping list print option "Show header"
+DefaultUserSetting('shopping_list_print_group_by_product_group', true); // Default for the shopping list print option "Group by product group"
+DefaultUserSetting('shopping_list_print_layout_type', 'table'); // Default for the shopping list print option "Layout type" (table or list)
 
 // Recipe settings
 DefaultUserSetting('recipe_ingredients_group_by_product_group', false); // Group recipe ingredients by their product group
@@ -204,6 +220,7 @@ DefaultUserSetting('recipes_show_ingredient_checkbox', false); // When enabled, 
 
 // Chores settings
 DefaultUserSetting('chores_due_soon_days', 5); // The "due soon" days
+DefaultUserSetting('chores_overview_swap_tracking_buttons', false); // When enabled, the "Track next chore schedule" and "Track chore execution now" buttons/menu items are swapped
 
 // Batteries settings
 DefaultUserSetting('batteries_due_soon_days', 5); // The "due soon" days
@@ -211,11 +228,9 @@ DefaultUserSetting('batteries_due_soon_days', 5); // The "due soon" days
 // Tasks settings
 DefaultUserSetting('tasks_due_soon_days', 5); // The "due soon" days
 
-// Component configuration for Quagga2 - read https://github.com/ericblade/quagga2#configobject for details
-// Below is a generic good configuration,
-// for an iPhone 7 Plus, halfsample = true, patchsize = small, frequency = 5 yields very good results
-DefaultUserSetting('quagga2_numofworkers', 4);
-DefaultUserSetting('quagga2_halfsample', false);
-DefaultUserSetting('quagga2_patchsize', 'medium');
-DefaultUserSetting('quagga2_frequency', 10);
-DefaultUserSetting('quagga2_debug', true);
+// Calendar settings
+DefaultUserSetting('calendar_color_products', '#007bff'); // The event color (hex code) for due products
+DefaultUserSetting('calendar_color_tasks', '#28a745'); // The event color (hex code) for due tasks
+DefaultUserSetting('calendar_color_chores', '#ffc107'); // The event color (hex code) for due chores
+DefaultUserSetting('calendar_color_batteries', '#17a2b8'); // The event color (hex code) for due battery charge cycles
+DefaultUserSetting('calendar_color_meal_plan', '#6c757d'); // The event color (hex code) for meal plan items
