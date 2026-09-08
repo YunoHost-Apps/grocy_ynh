@@ -2,10 +2,10 @@ packaging_format = 2
 
 id = "grocy"
 name = "Grocy"
-description.en = "Web-based groceries & household management solution for your home"
-description.fr = "Solution Web de gestion d'épicerie et de gestion de la maison"
+description.en = "Groceries & household management solution for your home"
+description.fr = "Gestion d'épicerie et de gestion de la maison"
 
-version = "4.7.1~ynh1"
+version = "4.7.1~ynh2"
 
 maintainers = []
 
