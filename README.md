@@ -8,7 +8,7 @@ It shall NOT be edited by hand.
   Grocy, packaged for YunoHost
 </h1>
 
-Web-based groceries & household management solution for your home
+Groceries & household management solution for your home
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://grocy.info/)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://en.demo.grocy.info/stockoverview)
